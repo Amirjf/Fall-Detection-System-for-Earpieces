@@ -1,0 +1,252 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Optimizing Microgrid Energy Management in Assen with IoT-Enabled Distributed Computing}
+
+\author{
+\IEEEauthorblockN{Soheil Behnam Roudsari, Mina Ghaderi, Amir Jafari}
+\IEEEauthorblockA{\textit{Hanze University of Applied Sciences}, Groningen, Netherlands \\
+Emails: \{s.behnam.roudsari, m.passport.4, a.jafari\}@st.hanze.nl}
+}
+
+\maketitle
+
+\begin{abstract}
+This study explores the deployment of an IoT-enabled microgrid to improve energy management in Assen. A hybrid edge-fog-cloud architecture is proposed to integrate large-scale energy planning, predictive analytics, and real-time processing. To ensure reliable data exchange, the system integrates 5G, LoRaWAN, and NB-IoT communication technologies.The system is assessed on the basis of cost, energy efficiency, security, scalability, and latency. The results show that the suggested model is an appealing choice for smart city energy management since it improves grid resilience, lowers transmission losses, and facilitates the incorporation of renewable energy.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+Microgrid, IoT, Edge Computing, Fog Computing, Cloud Computing, Smart Grid, Energy Management, 5G, LoRaWAN, NB-IoT, Renewable Energy, Smart Cities, Assen
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Smart city energy management faces challenges due to increasing electricity demand in metropolitan areas and the transition to renewable energy. Traditional centralized power networks struggle with real-time energy distribution, fluctuating demand, and grid stability, resulting in inefficiencies and higher operational costs, and a larger chance of power outages~\cite{smartcities4020024}. This paper investigates microgrids as a potential remedy for these problems. In order to improve energy autonomy and grid resilience, a microgrid incorporates distributed energy resources (DERs), such as solar panels, wind turbines, and battery storage~\cite{saeed_practical_2023}. Microgrids reduce transmission losses, increase dependability, and facilitate the integration of renewable energy sources by decentralizing energy management~\cite{smartcities4020024}.
+
+To maximize local energy production, the city of Assen has implemented sustainability projects such as the Energy Garden and Energy Hubs. However, these initiatives need a comprehensive framework for energy management that incorporates intelligent monitoring and control. These initiatives would be strengthened by the installation of an IoT-enabled microgrid, which would result in a more robust and efficient energy system. A microgrid supports Assen's transition to a smart city by improving its capacity to improve energy management through automation and real-time data analytics~\cite{smartcities4020024}.
+
+Real-time communication, control, and monitoring are necessary for microgrid operation to be successful. Microgrids can balance energy generation, storage, and consumption thanks to the Internet of Things' (IoT) ability to automate data collecting and optimization~\cite{9823928}. However, choosing the right communication technology and computing architecture is essential to deployment success. Data processing locations are determined by IoT designs, such as Edge, Fog, and Cloud computing, which affect energy efficiency, scalability, and latency~\cite{CloudFogMist2021}. Likewise, network performance, dependability, and operating expenses are impacted by the choice of communication protocols, including LoRa, NB-IoT, and 5G~\cite{9823928}.
+
+\subsection{Research Scope and Main Question}
+
+This study looks at how Assen's energy management can be enhanced and its transition to a smart city facilitated via an IoT-enabled microgrid. In order to identify the best deployment, the study assesses IoT architectures, communication technologies, and integration strategies while taking reliability, scalability, efficiency, and latency into account.
+
+The following primary research question serves as the study's guide: 
+
+How might Assen's smart city development enhance sustainability and energy management with an IoT-enabled microgrid?
+
+In order to answer this query, the research investigates:
+
+\begin{enumerate}
+    \item How can an IoT-enabled microgrid enhance Assen’s energy management?
+    \item Which IoT architectures (Edge, Fog, Cloud) and communication technologies (e.g., LoRa, 5G) are most suitable for real-time microgrid optimization?
+    \item What performance criteria (e.g., latency, cost, scalability) are most critical for microgrid deployment?
+    \item What is the most effective IoT-based microgrid strategy for Assen in terms of energy efficiency, cost, and sustainability?
+\end{enumerate}
+
+By analyzing these factors, this study aims to develop a scalable and efficient microgrid model that aligns with Assen’s smart city objectives.
+
+
+\section{Literature Review}
+
+With an emphasis on its incorporation into sustainability frameworks and urban infrastructure, this literature review explores the role of IoT in smart energy management. The review examines current studies on energy systems-related communication technologies, IoT designs, and smart city research. It defines the function of important computing models in real-time energy applications, such as edge, fog, cloud, and mist computing. Furthermore, it presents wireless communication technologies that facilitate data sharing and automation in energy networks based on the Internet of Things.
+
+The literature is structured thematically. First, a discussion outlines smart cities and the challenges of energy management in urban environments. Next, the review explores the role of IoT in optimizing smart energy systems, followed by a detailed definition of IoT architectures, including edge, fog, cloud, and mist computing. Finally, communication technologies relevant to IoT-based energy networks are defined, with a focus on their scalability, efficiency, and real-time performance. This review provides a foundation for assessing how IoT-based architectures and communication technologies can support microgrid energy management, which will be explored in the next section.
+
+\subsection{Smart Cities and Energy Management}
+
+Sustainability is a top issue in smart cities, which integrate digital technologies to enhance public services, infrastructure, and energy efficiency~\cite{smartcities4020024}. Energy management is a major issue in the development of smart cities since cities must integrate renewable energy sources and deal with growing electricity consumption and system instability~\cite{en14185976}. Modern urban demands cannot be met by traditional centralized power systems due to their inefficiencies, which include substantial energy losses and grid instability~\cite{10474733}.
+
+Demand-side response systems, predictive analytics, and decentralized energy networks are some of the digital energy management solutions that smart cities use to address these issues~\cite{saeed_practical_2023}. But conventional systems frequently lack real-time flexibility, necessitating the use of more sophisticated digital alternatives. Real-time monitoring, automation, and optimization are made possible by the integration of IoT-based energy systems, which increases resilience and efficiency~\cite{10474733}.
+
+\subsection{IoT in Smart Cities and Energy Systems}
+
+A key element of smart cities is the Internet of Things (IoT), which makes it possible to automate processes, make intelligent decisions, and collect data in real time. Energy management, transportation, and public services are just a few of the urban systems that may be continuously monitored and optimized thanks to the Internet of Things' networked sensors, devices, and communication networks~\cite{smartcities4020024}. IoT is essential to the energy industry for improving power grid dependability, integrating renewable energy sources, and balancing supply and demand~\cite{en14185976}.  
+
+IoT-enabled smart energy systems use distributed sensors, smart meters, and intelligent controllers to monitor and reg- ulate energy consumption in real time. These systems facil- itate predictive maintenance, demand-side management, and dynamic load balancing, reducing energy waste and improv- ing overall efficiency~\cite{10474733}. IoT improves grid resilience, sustainability, and cost-effectiveness in urban environments by enabling automated responses based on real-time conditions.  
+
+In order to handle, process, and analyze the vast amounts of real-time data produced by smart grids and microgrids, effective computational architectures are needed at many levels. The following section describes these architectures and their functions in IoT-based systems.
+
+\subsection{Definition of IoT Architectures}
+
+Edge computing eliminates the requirement for centralized data transmission by processing data at the device level. Low-latency processing and quick decision-making are ensured by the use of smart meters, Internet of Things sensors, and microgrid controllers~\cite{smartcities4020024}. Edge computing improves demand-side management, defect detection, and real-time energy adjustments by doing calculations locally. However, its limited processing and storage capacity limits its ability to do large-scale data aggregation and advanced analytics~\cite{smartcities4020024}.  
+
+A geographically dispersed computing architecture known as fog computing offers flexible compute, communication, and storage services by tying together disparate devices at the edge level~\cite{CloudFogMist2021}. Fog computing improves real-time responsiveness and throughput by processing data closer to the source, reducing data transfer rates and network congestion. Low-latency decision-making is made possible by this design, which also lessens reliance on cloud resources and is perfect for predictive analytics, load balancing, and decentralized microgrid control~\cite{CloudFogMist2021}.  
+
+Cloud computing offers high-performance computation, large storage capacity, and extensive data analytics capabilities. It consists of multiple high-performance servers that provide scalable processing power, AI-based optimization, and global data accessibility ~\cite{CloudFogMist2021}. However, higher latency and network dependency make Cloud computing less suitable for immedi- ate real-time applications, limiting its role to historical energy analysis, forecasting, and large-scale grid management ~\cite{CloudFogMist2021}.  
+
+Mist computing extends Fog computing by processing data directly at the sensor level, reducing the need for data transmission to higher layers. It is specifically designed for low-power IoT devices, such as smart energy meters and environmental sensors, allowing for basic data filtering and pre-processing ~\cite{CloudFogMist2021}. While it minimizes power consumption and reduces network dependency, its limited computational capability makes it unsuitable for complex decision-making or predictive analytics ~\cite{CloudFogMist2021}.   
+
+Depending on the demands of scalability, cost, and real-time processing, each design offers distinct benefits. The Methodology section presents a detailed comparison and analyzes each architecture's suitability for microgrid energy management.
+
+
+\subsection{Communication Technologies for IoT-Based Systems}
+
+A range of communication protocols are used by the Internet of Things (IoT) to facilitate data sharing between systems and devices. Regarding data speeds, scalability, power consumption, and range, each communication method has unique advantages. The general characteristics of some widely used IoT communication protocols are listed below:
+
+\textit{LoRaWAN (Long Range Wide Area Network)}: A low-power wide-area network technology called LoRaWAN is perfect for sending modest data payloads across large distances. LoRaWAN is renowned for its capacity to travel up to 800 meters in urban settings and 25 miles in line-of-sight. It is best suited for low-power applications that demand low data rates, including transmitting sensor data. For secure communications, LoRaWAN uses 128-bit symmetric encryption based on the Advanced Encryption Standard (AES)~\cite{smartcities4020024}.
+
+\textit{NB-IoT (Narrowband IoT)}: NB-IoT is a low-power, wide-area network communication technology that focuses on deep penetration and improved coverage, especially in indoor and urban settings. Devices can function for longer periods of time without regular battery replacements due to its effective operation and low energy consumption. NB-IoT offers flexibility in network setup by supporting multiple deployment options, including standalone, guardband, and in-band~\cite{9023471}.
+
+\textit{5G Networks}: Compared to earlier generations, 5G offers notable gains in speed, capacity, and latency, making it the next generation of mobile communication networks. It makes ultra-low-latency communication possible, which speeds up data flow and supports more devices connected at once. Emerging IoT applications benefit greatly from 5G networks since they are perfect for applications that need high-speed data transfer and the capacity to manage massive volumes of data at once~\cite{8752482}.
+
+\textit{Wi-Fi}: Known for its high-speed data transmission capabilities, Wi-Fi is a popular wireless communication technology. It is frequently utilized in local area networks (LANs) and runs in the unlicensed 2.4 GHz and 5 GHz frequency bands. Wi-Fi is perfect for applications that need a lot of bandwidth because it has a comparatively high data throughput. Comparatively speaking to other communication technologies, its range is constrained; depending on the situation, it can usually travel up to 100 meters ~\cite{10474733}.
+
+\textit{Zigbee}: Zigbee is a low-power, short-range wireless communication protocol that is intended for use in sensor networks, home automation, and other applications where low power consumption and data rates are essential. Based on the IEEE 802.15.4 standard, Zigbee is well-known for its capacity to build mesh networks that enable devices to connect over long distances by using intermediary nodes to relay messages. Applications like energy monitoring, security systems, and smart lighting are among its frequent uses~\cite{8458217}.
+
+
+\vspace{5pt}
+\noindent
+Important IoT architectures and communication technologies related to smart energy systems were reviewed in this study. This section laid the groundwork for comprehending the advantages and disadvantages of edge, fog, cloud, and mist computing, as well as communication protocols including LoRaWAN, NB-IoT, and 5G, in IoT-based energy management. However, more research is needed to determine how exactly they may be applied to microgrid energy systems. The technique used to evaluate their suitability for Assen's microgrid, taking into account crucial performance characteristics including latency, scalability, energy efficiency, and deployment practicality, is described in the part that follows.
+\vspace{5pt}
+
+\section{Methodology and System Design}
+
+\begin{table*}[t]
+\centering
+\caption{Comparison of IoT Architectures and Communication Technologies for Microgrids (Data from \cite{systematicsurvey, TagoIO2023, s24082509})}
+\label{tab:comparison}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Criterion} & \textbf{Edge} & \textbf{Fog} & \textbf{Cloud} & \textbf{Mist} & \textbf{LoRa} & \textbf{5G} & \textbf{Wi-Fi} & \textbf{NB-IoT} & \textbf{Zigbee} \\
+\hline
+\textbf{Latency (ms)} & \textbf{1-10} & 10-100 & \textit{100-500} & \textbf{$<$1} & \textit{200-1000} & \textbf{$<$1} & 10-100 & 100-500 & 10-100 \\
+\hline
+\textbf{Scalability} & \textit{Limited} & Moderate & \textbf{Very high} & \textit{Very low} & \textbf{High} & \textbf{High} & Medium & \textbf{High} & Medium \\
+\hline
+\textbf{Security} & \textbf{High} & \textbf{High} & Moderate & \textit{Low} & Moderate & \textbf{High} & Moderate & \textbf{High} & Moderate \\
+\hline
+\textbf{Energy Efficiency (mJ/bit)} & \textbf{10-50} & 50-100 & \textit{100-500} & \textbf{5-20} & \textbf{0.1-1} & \textit{50-200} & \textit{100-500} & \textbf{1-10} & \textbf{0.1-1} \\
+\hline
+\textbf{Coverage (km)} & \textit{Local} & \textit{Local} & \textbf{Global} & \textit{Ultra-local} & \textbf{10-15} & \textit{1-2} & \textit{0.1-0.5} & \textbf{10-15} & \textit{0.1-0.5} \\
+\hline
+\textbf{Processing Capacity (GFLOPS)} & \textit{10-100} & 100-500 & \textbf{1000+} & \textit{1-10} & Low & \textbf{1000+} & 100-500 & Low & Low \\
+\hline
+\textbf{Capacity (Devices per Network)} & 1000+ & 10,000+ & \textbf{1M+} & 100 & \textbf{1M+} & \textbf{1M+} & 250 & \textbf{100K+} & 65,000 \\
+\hline
+\textbf{Power Consumption (W)} & 1-5 & 5-20 & \textit{50-200} & \textbf{$<$1} & \textbf{$<$0.1} & \textit{50-200} & \textit{50-200} & 1-10 & \textbf{$<$0.1} \\
+\hline
+\textbf{Data Rate (Mbps)} & Medium & \textbf{High} & \textbf{Very high} & \textit{Very low} & \textit{0.3-50} & \textbf{1000+} & \textbf{100-1000} & \textit{0.1-10} & \textit{0.3-2} \\
+\hline
+\textbf{Cost (\$ per unit)} & \textbf{Low} & Moderate & \textit{High} & \textbf{Very low} & \textbf{Low} & \textit{Very high} & Medium & \textbf{Low} & \textbf{Low} \\
+\hline
+\end{tabular}
+\end{table*}
+
+
+\subsection{Research Approach}
+
+In the context of Assen's smart city framework, this study uses a comparative analysis technique to assess IoT architectures and communication technologies for microgrid energy management. The efficacy of Edge, Fog, Cloud, and Mist computing, as well as LoRa, 5G, NB-IoT, Zigbee, and Wi-Fi, in low-latency, scalable, and energy-efficient operations is thoroughly evaluated.
+
+In the methodology section of this study, important assessment criteria are first established to guarantee a systematic examination. Next, it looks at how IoT architectures facilitate real-time microgrid applications and contrasts communication technologies for energy management prediction, automation, and monitoring. The best IoT-based microgrid plan is finally determined by analyzing performance trade-offs, guaranteeing sustainability, scalability, and cost-effectiveness.
+
+By choosing an optimal microgrid system, this data-driven approach improves urban energy resilience and facilitates the transformation of smart cities. 
+
+
+\subsection{Criteria for Evaluating IoT Architectures and Communication Technologies}
+
+This study creates a structured evaluation framework to determine the best IoT architecture and communication technologies for microgrid energy management in Assen. Existing research on distributed energy systems, smart grids, and IoT-enabled microgrid management serves as the foundation for the selection criteria~\cite{en14185976, 10474733}. These standards evaluate the cost-effectiveness, scalability, dependability, and efficiency of the system in practical applications.
+
+Latency is critical in real-time energy applications, as microgrids require low-latency communication to maintain dynamic load balancing, fault detection, and automated response mechanisms~\cite{9584756}. Lower latency improves energy dispatch decisions and reduces operational risks during grid fluctuations.
+
+Scalability measures the ability of an IoT system to handle increasing data volume, device connections, and fluctuating energy demands~\cite{9257923}. Highly scalable architectures support future grid expansions and the seamless integration of renewable energy sources.
+
+Security ensures the protection of critical energy data, preventing cyber threats and ensuring reliable grid operations~\cite{9823928}. Microgrids require encrypted data exchanges and intrusion detection mechanisms to prevent unauthorized access.
+
+Energy efficiency evaluates the power consumption of IoT architectures and communication technologies, directly influencing microgrid sustainability. Energy-efficient solutions reduce operational costs and reliance on non-renewable power sources~\cite{9257923}.
+
+Coverage refers to the geographic range of communication technologies, impacting microgrid connectivity in urban and remote areas~\cite{8752482}. Technologies with wider coverage enable uninterrupted monitoring and control across large-scale microgrid networks.
+
+Power consumption assesses the energy demand of computing and communication layers, particularly in battery-powered IoT devices and low-energy sensor networks~\cite{smartcities4020024}. Low-power solutions enhance operational efficiency and reduce maintenance costs.
+
+Data rate determines transmission speed, affecting real-time energy monitoring, grid automation, and predictive analytics~\cite{7123563}. High data rates improve decision-making but require greater bandwidth and processing capacity.
+
+Infrastructure cost includes installation, maintenance, and operational expenses for different IoT architectures and communication technologies~\cite{8458217}. Cost-effective solutions must balance performance and affordability to ensure financial feasibility.
+
+Capacity defines the maximum number of connected devices and the volume of data the system can handle without performance degradation~\cite{CloudFogMist2021}. High-capacity solutions support large-scale microgrids and multiple distributed energy resources.
+
+Table~\ref{tab:comparison} provides a structured analysis of IoT architectures and communication technologies based on these criteria. This comparative analysis guides the selection of the most effective approach for microgrid implementation in Assen.
+
+\subsection{Selection of IoT Architecture for Microgrid Energy Management}
+
+Assen's microgrid's operating requirements are best satisfied by a hybrid edge-fog-cloud model, according to a comparative study of IoT architectures. Low latency, great scalability, and effective resource use are ensured by this integrated strategy, which optimizes real-time processing, predictive analytics, and long-term energy planning. The following is the reasoning behind the selection:
+
+Real-time problem detection and demand-side energy modifications are made possible by edge computing, which provides instantaneous, localized data processing at smart meters and microgrid controllers. However, large-scale analytics are limited by its limited processing capacity~\cite{9584756}.
+
+By locally aggregating and analyzing data before sending crucial insights to the cloud, fog computing serves as an intermediary layer that reduces network congestion. This facilitates load balancing, predictive maintenance, and distributed energy optimization~\cite{9257923}.
+
+For long-term strategic planning, energy forecasts, and large-scale data analytics, cloud computing offers centralized processing. However, it is not appropriate for quick control actions because to its increased latency and reliance on network connectivity~\cite{9823928}.
+
+Mist computing is designed for ultra-localized processing at IoT sensors, reducing data transmission requirements. However, its extremely limited computational capacity makes it unsuitable for managing complex microgrid functions, particularly those requiring predictive analytics and real-time decision-making~\cite{CloudFogMist2021}.  
+
+This study suggests a \textbf{hybrid fog-edge-cloud architecture} that combines centralized analytics, localized optimization, and real-time response to increase efficiency. Section E (Microgrid System Design and Implementation approach) describes the integration approach for this design within Assen's microgrid.
+
+\subsection{Selection of Communication Technology for Microgrid Implementation}
+
+Scalability, effective data interchange, and real-time energy regulation in Assen's microgrid all depend on dependable connectivity. As outlined in Table~\ref{tab:comparison}, the selection procedure assesses communication technologies according to important performance parameters, such as latency, scalability, security, energy efficiency, data throughput, coverage, and cost.
+
+This study suggests a \textbf{hybrid 5G-LoRaWan-NB-IoT communication strategy} that combines several technologies to maximize microgrid operations rather than depending just on one protocol. The following is the reasoning behind the selection:
+
+Real-time automation, dynamic grid control, and predictive maintenance are made possible by 5G's ultra-low latency and high-speed data transfer. However, its application is restricted to crucial, time-sensitive tasks because to its high infrastructure cost and power consumption~\cite{8752482}.  
+
+LoRaWAN is chosen for its long-range, low-power connectivity, which guarantees dependable communication for distant microgrid components and dispersed energy assets. Its extensive coverage and energy efficiency help to offset its poor data rate~\cite{smartcities4020024}.  
+
+NB-IoT gives smart meters and IoT devices reliable, energy-efficient connectivity. Despite having a slower communication throughput than 5G, its low power consumption makes it perfect for distributed sensing and continuous monitoring applications~\cite{9023471}.  
+
+Certain communication technologies were considered but not selected due to their limitations: 
+
+Wi-Fi, while offering high-speed data transfer, has a limited range and higher power consumption, restricting its applicability to localized microgrid environments rather than large-scale urban networks~\cite{10474733}.
+
+Zigbee is a short-range, low-power protocol commonly used for localized energy monitoring. However, its limited range makes it impractical for expansive microgrid networks~\cite{8458217}.    
+
+This hybrid communication approach ensures maximum performance for Assen's microgrid by striking a compromise between long-range coverage, high-speed automation, and energy-efficient monitoring. Section E (Microgrid System Design and Implementation Strategy) goes into additional depth about how these technologies are integrated. 
+
+\subsection{Microgrid System Design and Implementation Strategy}
+
+\subsubsection{Integration of IoT Architecture and Communication Layers}
+
+Combining Communication and IoT Architecture Layers: To improve the effectiveness of energy management, the Assen microgrid system combines edge, fog, and cloud computing. While fog computing lowers network congestion by locally gathering and analyzing data prior to transmission to the cloud, edge computing allows real-time data processing for immediate fault detection and energy changes~\cite{10474733,9584756}. Although cloud computing helps with demand response and long-term forecasting, its latency and network dependence make it unsuitable for real-time operations~\cite{9823928}. 
+
+The communication infrastructure integrates NB-IoT for energy-efficient sensor communication, LoRaWAN for long-range, low-power connectivity, and 5G for ultra-low-latency automation~\cite{8752482, smartcities4020024, 9023471}. When combined, these technologies improve energy distribution, lower transmission delays, and strengthen grid resilience.
+
+\subsubsection{Real-Time Monitoring and Automated Control Mechanisms}
+
+Power generation and consumption are continuously monitored by the microgrid, which modifies distribution in response to changes in demand in real time. When IoT-enabled sensors identify equipment failures, grid instability, and voltage variations, they initiate corrective measures at the edge level~\cite{smartcities4020024}. While cloud analytics provide predictive insights for long-term planning, fog computing maximizes local power allocation ~\cite{7123563}. 
+
+Multiple levels of automated control mechanisms are in place: cloud computing facilitates demand forecasting using both historical and real-time data, fog computing controls decentralized power routing, and edge computing manages local variations~\cite{CloudFogMist2021, 8752482}. Grid stability and energy efficiency are improved by this multi-layered strategy.
+
+\subsubsection{Scalability, Security, and Implementation Considerations}
+
+Considerations for Scalability, Security, and Implementation: The microgrid system's scalability allows for the smooth integration of renewable energy sources and Internet of Things devices~\cite{9257923}. System dependability is ensured by security mechanisms such intrusion detection, multi-factor authentication, and end-to-end encryption~\cite{9823928, 7123563}. 
+
+Hybrid communication strategies and distributed processing help to address issues like 5G implementation costs, communication protocol interoperability, and possible latency under heavy network loads~\cite{8752482, 10474733, CloudFogMist2021}. These steps guarantee resilient networks and effective energy management.
+
+\section{Conclusion and Future Work}
+
+In this paper, an IoT enabled microgrid is suggested to enhance energy management in the smart city of Assen. The hybrid system consists of edge, fog and cloud computing and 5G, LoRaWAN, and NB-IoT to support real time data collection, sharing and control. In this paper, IoT architectures and communication protocols are compared, and the pros and cons in terms of differenct criteria such as latency, energy efficiency, scalability, and cost are discussed. From the results of the study, it can be seen that the use of a distributed, multi layer processing scheme enhances the grid stability and facilitates the integration of renewable energy sources.
+
+However, there are some challenges that arise with the large scale implementation of the model including interoperability issues, infrastructure costs, and cybersecurity risks.
+
+Future work will investigate the application of blockchain technology to the energy sector to ensure the security of P2P energy transactions between prosumers. Blockchain can increase market efficiency by revealing information about supply and demand, eliminate the need for centralized institutions, and stimulate the installation of solar power plants, energy storage systems, and other wind and solar products.
+
+This paper finds that a decentralized energy system is able to increase the energy delivery and utilization rate, relieve the energy transmission pressure, and accelerate the transition to sustainable energy.
+Moreover, real world pilot studies will be carried out to test the effectiveness of the system in actual grid environments and optimize the strategies for load balancing to increase the efficiency.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
