@@ -6,7 +6,7 @@ import numpy as np
 root_directory = r"output"
 
 # List of activity names of interest
-activities_of_interest = ['Activity13', 'Activity14', 'Activity15','Activity10']
+activities_of_interest = ['Activity10']
 
 # Index of the column to be replaced (assuming the first column has index 0)
 column_index = "Tag"

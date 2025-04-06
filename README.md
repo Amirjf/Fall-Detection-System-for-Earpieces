@@ -47,13 +47,16 @@ The script performs the following steps:
 
 ---
 
-🏷️ Fall Labeling Script – Overview and Approach
+### 🏷️ Fall Labeling Script – Overview and Approach
 
 The fall_labeling.py script is designed to automatically detect and label fall events in the UMAFall dataset using raw sensor signals. It focuses specifically on a subset of activities (Activity10, Activity13, Activity14, Activity15) that represent different types of falls.
 
 ⸻
 
-⚙️ How It Works 1. Target Activities:
+#### ⚙️ How It Works
+
+##### 1. Target Activities:
+
 The script only processes files corresponding to specific fall activities by matching activity names in the file names. 2. Abrupt Change Detection:
 For each fall trial:
 • It scans accelerometer readings (x, y, z axes) to identify points with abrupt changes, using a configurable threshold.
