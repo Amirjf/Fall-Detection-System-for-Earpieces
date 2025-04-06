@@ -250,7 +250,7 @@ def main():
     
     
     # Path to the directory where the UMA Fall dataset is located as downloaded
-    input_folder = r"datasets/UMAFall_Dataset2"
+    input_folder = r"datasets/UMAFall_Dataset"
     
     # Path to the directory where we want to save the datasets
     output_folder = r"output"
