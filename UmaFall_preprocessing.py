@@ -3,9 +3,7 @@ import csv
 import glob
 import os
 import math
-import numpy as np
 import shutil
-import pandas as pd
 from datetime import datetime, timedelta
 from UmaFall_Downsampling import Downsampled
 
