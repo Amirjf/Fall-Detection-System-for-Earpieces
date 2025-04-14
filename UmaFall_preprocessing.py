@@ -18,9 +18,8 @@ def format_timestamp(timestamp):
 
     return formatted_date_time
 
-
 def add_milliseconds(timestamp, milliseconds):
-    
+
     # Convert the time string to a datetime object
     time_object = datetime.strptime(timestamp[11:], '%H:%M:%S')
     
@@ -242,10 +241,7 @@ def process_to_up(output_folder):
 
 
 
-
-
 def main():      
-    
     
     # Path to the directory where the UMA Fall dataset is located as downloaded
     input_folder = r"datasets/UMAFall_Dataset"
