@@ -4,8 +4,33 @@ from sklearn.preprocessing import MinMaxScaler
 from imblearn.over_sampling import SMOTE
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Conv1D, MaxPooling1D, Flatten, Dense, Dropout
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
 import numpy as np
+import matplotlib.pyplot as plt
 
+
+
+def plot_confusion(y_true, y_pred, labels=[0, 1], class_names=['ADL', 'Fall']):
+    """
+    Plots a confusion matrix using seaborn heatmap.
+
+    Parameters:
+    - y_true: Ground truth labels
+    - y_pred: Predicted labels
+    - labels: List of class indices (default: [0, 1])
+    - class_names: List of class names for axis labels
+    """
+    cm = confusion_matrix(y_true, y_pred, labels=labels)
+    plt.figure(figsize=(6, 4))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", 
+                xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel('Predicted')
+    plt.ylabel('True')
+    plt.title('Confusion Matrix')
+    plt.tight_layout()
+    plt.show()
+    
 def run_fall_detection_model(X_acc, X_all, y, 
                              use_gyro=False,
                              apply_smote=True,
@@ -77,9 +102,15 @@ def run_fall_detection_model(X_acc, X_all, y,
     
     # Evaluate
     loss, acc = model.evaluate(X_test, y_test, verbose=0)
-    print(f"\n✅ Test Accuracy: {acc:.2f}")
     
     y_pred = (model.predict(X_test) > 0.5).astype("int32")
+
+    plot_confusion(y_test, y_pred)
+
+    print(f"\n✅ Test Accuracy: {acc:.2f}")
+
+
+    
     print("\n📝 Classification Report:")
     print(classification_report(y_test, y_pred))
 
