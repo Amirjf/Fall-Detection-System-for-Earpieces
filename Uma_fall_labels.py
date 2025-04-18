@@ -20,6 +20,10 @@ def detect_abrupt_changes(data, threshold):
             changes.append(i)
     return changes
 
+
+
+
+
 def find_max_value_index(data, changes):
     max_index = max(changes, key=lambda i: abs(data[i] - data[i-1]))
     return max_index

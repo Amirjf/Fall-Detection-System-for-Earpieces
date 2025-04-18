@@ -82,19 +82,19 @@ def run_fall_detection_model(X_acc, X_all, y,
     X_train, X_test, y_train, y_test = train_test_split(
         X_resampled, y_resampled, test_size=test_size, stratify=y_resampled, random_state=42)
     
+    
     # CNN model
     model = Sequential([
         Input(shape=(300, X.shape[2])),
-        Conv1D(filters=32, kernel_size=5, activation='relu'),
-        MaxPooling1D(pool_size=2),
-        Conv1D(filters=64, kernel_size=5, activation='relu'),
-        MaxPooling1D(pool_size=2),
-        Flatten(),
-        Dense(64, activation='relu'),
-        Dropout(0.5),
-        Dense(1, activation='sigmoid')
+        Conv1D(filters=16, kernel_size=3, activation='relu'),  # Basic temporal feature extraction
+        MaxPooling1D(pool_size=2),                             # Downsample features
+        Flatten(),                                             # Convert 3D to 1D
+        Dense(32, activation='relu'),                          # Fully connected layer
+        Dropout(0.3),                                          # Prevent overfitting
+        Dense(1, activation='sigmoid')                         # Binary output: fall or not
     ])
-    
+
+   
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     
     history = model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size,
