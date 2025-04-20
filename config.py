@@ -1,0 +1,1 @@
+sisfall_dataset_path='datasets/SisFall_dataset'
